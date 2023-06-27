@@ -1,14 +1,32 @@
 package com.autumnstudios.plugins.mercury
 
 import com.autumnstudios.mercury.utils.Horizon
+import com.autumnstudios.plugins.mercury.npc.NPCDataStorage
 import org.bukkit.plugin.java.JavaPlugin
 import org.checkerframework.checker.nullness.qual.NonNull
 import org.checkerframework.framework.qual.DefaultQualifier
 
 @DefaultQualifier(NonNull::class)
 class Mercury : JavaPlugin() {
+
+  companion object {
+    lateinit var instance: Mercury;
+
+    fun getInstance() : Mercury {
+      return Mercury.instance
+    }
+  }
+
+  lateinit var dataStorageNPC: NPCDataStorage;
+
+
+  fun register() {
+    instance = this;
+    dataStorageNPC = NPCDataStorage(this)
+  }
     override fun onEnable() {
-      // Plugin startup logic
+
+
       logger.info("Starting up Mercury (Library)")
       val versionList: List<String> = Horizon.quickList("1.20.1", "1.20")
 
@@ -32,7 +50,10 @@ class Mercury : JavaPlugin() {
         logger.severe("Made by Jade <3")
         logger.severe("")
         logger.severe("=====================================")
+        register()
       }
     }
     override fun onDisable() {}
+
+
 }
