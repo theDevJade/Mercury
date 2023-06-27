@@ -18,6 +18,7 @@ java {
 }
 
 dependencies {
+
   paperweight.paperDevBundle("1.20-R0.1-SNAPSHOT")
   // paperweight.foliaDevBundle("1.20-R0.1-SNAPSHOT")
   // paperweight.devBundle("com.example.paperfork", "1.20-R0.1-SNAPSHOT")
@@ -28,6 +29,8 @@ dependencies {
   implementation("cloud.commandframework", "cloud-paper", "1.8.3")
   implementation(kotlin("stdlib-jdk8"))
   compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0")
+  implementation("com.github.Revxrsal.Lamp:common:3.1.5")
+  implementation("com.github.Revxrsal.Lamp:bukkit:3.1.5")
 }
 
 tasks {
@@ -36,8 +39,13 @@ tasks {
     dependsOn(reobfJar)
   }
 
+  compileKotlin {
+    kotlinOptions.javaParameters = true
+  }
+
   compileJava {
     options.encoding = Charsets.UTF_8.name() // We want UTF-8 for everything
+
 
     // Set the release flag. This configures what version bytecode the compiler will emit, as well as what JDK APIs are usable.
     // See https://openjdk.java.net/jeps/247 for more information.
@@ -75,6 +83,7 @@ tasks {
 
 }
 repositories {
+  maven(url = "https://jitpack.io")
   mavenCentral()
   maven("https://repo.dmulloy2.net/repository/public/")
 }

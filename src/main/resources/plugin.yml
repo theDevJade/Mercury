@@ -4,5 +4,5 @@ main: com.autumnstudios.plugins.mercury.Mercury
 description: $description
 load: STARTUP
 authors:
-  - Author
-api-version: $apiVersion
+  - Jade
+

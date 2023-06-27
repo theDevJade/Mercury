@@ -4,6 +4,8 @@ import com.comphenix.protocol.PacketType
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import com.comphenix.protocol.events.PacketContainer
+import net.kyori.adventure.text.Component
+
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
@@ -19,6 +21,10 @@ class ColorUtil {
 
             return newText
         }
+
+      fun getTextComponent(text: String) : Component {
+        return Component.text(ColorUtil().colorize(text))
+      }
     }
 
     fun colorize(text: String, char: Char = '&') : String {

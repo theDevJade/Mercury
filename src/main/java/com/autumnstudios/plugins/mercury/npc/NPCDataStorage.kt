@@ -9,6 +9,7 @@ import com.comphenix.protocol.events.ListenerPriority
 import com.comphenix.protocol.events.PacketAdapter
 import com.comphenix.protocol.events.PacketContainer
 import com.comphenix.protocol.events.PacketEvent
+import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 
 
@@ -25,6 +26,10 @@ class NPCDataStorage(main: Mercury) {
     registerListeners()
   }
 
+  private fun flatoutInit() {
+    Bukkit.getServer().pluginManager.registerEvents(NPCEvents(), instance)
+  }
+
   private fun registerListeners() {
 
     protcolLibrary.addPacketListener(object : PacketAdapter(instance, ListenerPriority.HIGHEST, PacketType.Play.Client.USE_ENTITY) {
@@ -34,13 +39,18 @@ class NPCDataStorage(main: Mercury) {
         clickEvent(entityID, event)
       }
     })
+
+    flatoutInit()
   }
 
   fun clickEvent(entityID: Int, event: PacketEvent) {
     if (containsID(entityID)) {
       event.isCancelled = true;
       val npc: NPC = locateWithID(entityID)!!
-      npc.npcExtensive!!.onClick(ClickType.LEFT_CLICK)
+      if (npc.npcExtensive != null) {
+        npc.npcExtensive!!.onClick(ClickType.LEFT_CLICK, event.player)
+      }
+
     }
   }
 
@@ -67,5 +77,13 @@ class NPCDataStorage(main: Mercury) {
 
     return null;
   }
+
+  fun deleteAll(confirm: Boolean) {
+    for ((id, n) in dataStorage.entries) {
+      n.removeAll()
+    }
+  }
+
+
 
 }

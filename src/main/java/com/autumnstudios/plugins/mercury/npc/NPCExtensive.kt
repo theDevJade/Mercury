@@ -1,8 +1,10 @@
 package com.autumnstudios.plugins.mercury.npc
 
-interface NPCExtensive {
+import org.bukkit.entity.Player
 
-  fun onClick(clickType: ClickType)
+fun interface NPCExtensive {
+
+  fun onClick(clickType: ClickType, p: Player)
 
 
 }
