@@ -1,6 +1,6 @@
 name: $name
 version: $version
-main: io.papermc.paperweight.testplugin.TestPlugin
+main: com.autumnstudios.plugins.mercury.Mercury
 description: $description
 load: STARTUP
 authors:
