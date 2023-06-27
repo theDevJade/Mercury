@@ -6,6 +6,8 @@ import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
 import com.mojang.authlib.GameProfile
 import net.minecraft.network.protocol.game.ClientboundAddPlayerPacket
+import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket
+import net.minecraft.network.protocol.game.ClientboundTabListPacket
 import net.minecraft.network.protocol.game.ServerboundClientInformationPacket
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.level.ServerLevel
@@ -72,6 +74,7 @@ class NPC(n: String, originalWorld: World, extenser: NPCExtensive? = null) {
   fun show(p: Player) {
     val connection: ServerGamePacketListenerImpl = (p as CraftPlayer).handle.connection
 
+    connection.send(ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER, entityPlayer))
     connection.send(ClientboundAddPlayerPacket(entityPlayer))
 
   }
