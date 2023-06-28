@@ -33,8 +33,8 @@ class TestCommands {
   @Command(*["menu", "blockmenu"])
   fun blockmenu(actor: CommandActor, @Default("") message: String?) {
     val menu: BlockMenu = BlockMenu(actor.player)
-    menu.setGridItem(1, "MANLY")
-    menu.setGridItem(2, "NOT_AS_MANLY")
+    menu.setGridItem(1, 1, "MANLY")
+    menu.setGridItem(1, 0, "NOT_AS_MANLY")
     menu.createAll()
   }
 }
