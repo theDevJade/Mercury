@@ -1,8 +1,13 @@
 package com.autumnstudios.plugins.mercury
 
 import com.autumnstudios.mercury.utils.Horizon
+import com.autumnstudios.plugins.mercury.chat.ColorUtil
 import com.autumnstudios.plugins.mercury.commands.TestCommands
+import com.autumnstudios.plugins.mercury.effects.PermPotionManager
 import com.autumnstudios.plugins.mercury.npc.NPCDataStorage
+import com.autumnstudios.plugins.mercury.schedulers.GlobalSchedulersData
+import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import org.checkerframework.checker.nullness.qual.NonNull
 import org.checkerframework.framework.qual.DefaultQualifier
@@ -17,36 +22,54 @@ class Mercury : JavaPlugin() {
     fun getMercury() : Mercury {
       return Mercury.instance
     }
+
+    fun getGlobalScheduler() : GlobalSchedulersData {
+      return Mercury.instance.globalSchedulersData
+    }
+
+    fun getPermPotionsManager() : PermPotionManager {
+      return Mercury.instance.permPotionsManager
+    }
   }
 
   lateinit var dataStorageNPC: NPCDataStorage;
+  lateinit var globalSchedulersData: GlobalSchedulersData;
+  lateinit var permPotionsManager: PermPotionManager
 
 
-  fun register() {
+
+  private fun register() {
     // Registering variables, and instance
     instance = this;
     dataStorageNPC = NPCDataStorage(this)
+    this.globalSchedulersData = GlobalSchedulersData()
+    permPotionsManager = PermPotionManager()
     // ##################
     registerCommands()
   }
 
-  fun registerCommands() {
+  private fun registerCommands() {
     val cmHandler: BukkitCommandHandler = BukkitCommandHandler.create(this)
     cmHandler.register(TestCommands())
   }
     override fun onEnable() {
-
+      logger.info("Starting up Mercury (Library)")
+      if (Bukkit.getOnlinePlayers().isNotEmpty()) {
+        for (p: Player in Bukkit.getOnlinePlayers()) {
+          p.kick(ColorUtil.getTextComponent("&c&lSERVER RELOAD - MERCURY"))
+        }
+      }
       check()
 
 
-      logger.info("Starting up Mercury (Library)")
+
       val versionList: List<String> = Horizon.quickList("1.20.1", "1.20")
 
 
     }
     override fun onDisable() {}
 
-  fun check() {
+  private fun check() {
     // Initial Check
     if (!(server.version.contains("1.20.1"))) {
       logger.severe("=====================================")
@@ -78,7 +101,7 @@ class Mercury : JavaPlugin() {
 
     var reqPlugins = "ProtocolLib"
 
-    if (server.pluginManager.getPlugin("ProtocolLib") == null) {
+    if (!server.pluginManager.isPluginEnabled("ProtocolLib")) {
       prohibited = true;
       error = "MISSING REQUIRED PLUGINS: ${reqPlugins}"
     }

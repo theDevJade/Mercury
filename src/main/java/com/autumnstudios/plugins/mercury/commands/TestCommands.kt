@@ -1,6 +1,7 @@
 package com.autumnstudios.plugins.mercury.commands
 
 import com.autumnstudios.mercury.nms.npc.NPC
+import com.autumnstudios.plugins.mercury.blockmenus.BlockMenu
 import com.autumnstudios.plugins.mercury.chat.ColorUtil
 import com.autumnstudios.plugins.mercury.npc.ClickType
 import com.autumnstudios.plugins.mercury.npc.NPCExtensive
@@ -27,5 +28,13 @@ class TestCommands {
     val npc: NPC = NPC(msg, player.world, true, testingNPCExtensive)
     npc.move(player.location)
     npc.show(player)
+  }
+
+  @Command(*["menu", "blockmenu"])
+  fun blockmenu(actor: CommandActor, @Default("") message: String?) {
+    val menu: BlockMenu = BlockMenu(actor.player)
+    menu.setGridItem(1, "MANLY")
+    menu.setGridItem(2, "NOT_AS_MANLY")
+    menu.createAll()
   }
 }

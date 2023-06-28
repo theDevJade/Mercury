@@ -3,6 +3,7 @@ version: $version
 main: com.autumnstudios.plugins.mercury.Mercury
 description: $description
 load: STARTUP
+api-version: "1.20"
 authors:
   - Jade
 
