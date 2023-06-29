@@ -56,6 +56,7 @@ class DependencyDownloader {
       }
       MercuryDepend.PACKETEVENTS -> {
         urlDown(PACKET_EVENTS, "PacketEvents")
+
       }
 
       else -> {}
