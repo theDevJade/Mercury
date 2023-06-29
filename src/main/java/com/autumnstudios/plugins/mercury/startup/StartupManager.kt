@@ -55,11 +55,11 @@ class StartupManager {
 
     var missingDepend: Boolean = false
 
-    if (!pluginManager.isPluginEnabled("ProtocolLib")) {
+    if (pluginManager.getPlugin("ProtocolLib") == null) {
       missingProtocolLib = true
       missingDepend = true
     }
-    if (!pluginManager.isPluginEnabled("PacketEvents")) {
+    if (pluginManager.getPlugin("packetevents") == null) {
       missingPacketEvents = true
       missingDepend = true
     }
