@@ -33,6 +33,7 @@ dependencies {
   implementation("com.github.Revxrsal.Lamp:bukkit:3.1.5")
   implementation("dev.simplix.cirrus:cirrus-spigot:2.0.0")
   compileOnly("dev.simplix:protocolize-api:2.1.0")
+  compileOnly("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
 }
 
 tasks {
@@ -90,6 +91,7 @@ repositories {
   maven("https://repo.dmulloy2.net/repository/public/")
   maven("https://repo.simplix.dev/repository/simplixsoft-public/")
   maven("https://mvn.exceptionflug.de/repository/exceptionflug-public/")
+  maven("https://repo.codemc.io/repository/maven-snapshots/")
 }
 kotlin {
   jvmToolchain(17)
