@@ -1,11 +1,11 @@
 package com.autumnstudios.plugins.mercury
 
-import com.autumnstudios.mercury.utils.Horizon
-import com.autumnstudios.plugins.mercury.chat.ColorUtil
-import com.autumnstudios.plugins.mercury.commands.TestCommands
-import com.autumnstudios.plugins.mercury.effects.PermPotionManager
-import com.autumnstudios.plugins.mercury.npc.NPCDataStorage
-import com.autumnstudios.plugins.mercury.schedulers.GlobalSchedulersData
+import com.autumnstudios.plugins.mercury.api.utils.ColorUtil
+import com.autumnstudios.plugins.mercury.api.commands.TestCommands
+import com.autumnstudios.plugins.mercury.api.effects.PermPotionManager
+import com.autumnstudios.plugins.mercury.api.npc.NPCDataStorage
+import com.autumnstudios.plugins.mercury.api.schedulers.GlobalSchedulersData
+import com.autumnstudios.plugins.mercury.modules.murky.MurkyCommand
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
@@ -51,6 +51,7 @@ class Mercury : JavaPlugin() {
   private fun registerCommands() {
     val cmHandler: BukkitCommandHandler = BukkitCommandHandler.create(this)
     cmHandler.register(TestCommands())
+    cmHandler.register(MurkyCommand())
   }
     override fun onEnable() {
       logger.info("Starting up Mercury (Library)")
@@ -63,7 +64,7 @@ class Mercury : JavaPlugin() {
 
 
 
-      val versionList: List<String> = Horizon.quickList("1.20.1", "1.20")
+
 
 
     }

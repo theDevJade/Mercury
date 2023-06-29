@@ -31,6 +31,8 @@ dependencies {
   compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0")
   implementation("com.github.Revxrsal.Lamp:common:3.1.5")
   implementation("com.github.Revxrsal.Lamp:bukkit:3.1.5")
+  implementation("dev.simplix.cirrus:cirrus-spigot:2.0.0")
+  compileOnly("dev.simplix:protocolize-api:2.1.0")
 }
 
 tasks {
@@ -86,6 +88,8 @@ repositories {
   maven(url = "https://jitpack.io")
   mavenCentral()
   maven("https://repo.dmulloy2.net/repository/public/")
+  maven("https://repo.simplix.dev/repository/simplixsoft-public/")
+  maven("https://mvn.exceptionflug.de/repository/exceptionflug-public/")
 }
 kotlin {
   jvmToolchain(17)
