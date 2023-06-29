@@ -51,7 +51,9 @@ class Mercury : JavaPlugin() {
     val manager: StartupManager = StartupManager()
 
   }
-  override fun onDisable() {}
+  override fun onDisable() {
+
+  }
 
 
 

@@ -52,6 +52,7 @@ class StartupManager {
   private fun dependencyCheck() : Boolean {
     var missingProtocolLib: Boolean = false
     var missingPacketEvents: Boolean = false
+    var missingFAWE: Boolean = false
 
     var missingDepend: Boolean = false
 
@@ -63,6 +64,7 @@ class StartupManager {
       missingPacketEvents = true
       missingDepend = true
     }
+
 
     if (missingDepend) {
       logger.severe("#######################")
