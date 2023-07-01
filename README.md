@@ -17,3 +17,7 @@ It only supports these versions:
 
 ### Versions
 - 1.20.1
+
+# Credits
+This Library uses the folloing:
+- java.math.expression.parser (https://github.com/sbesada/java.math.expression.parser/releases)
