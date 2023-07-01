@@ -2,7 +2,6 @@ package com.autumnstudios.plugins.mercury.modules.murky
 
 import com.autumnstudios.mercury.nms.npc.NPC
 import com.autumnstudios.plugins.mercury.Mercury
-import com.autumnstudios.plugins.mercury.api.gui.GUIMercury
 import com.autumnstudios.plugins.mercury.api.sound.QuickSound
 import com.autumnstudios.plugins.mercury.api.utils.ColorUtil
 import org.bukkit.entity.Player

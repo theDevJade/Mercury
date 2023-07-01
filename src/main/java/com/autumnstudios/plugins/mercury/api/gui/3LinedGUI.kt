@@ -7,7 +7,7 @@ import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 
-class GUIMercury(name: String) {
+class `3LinedGUI`(name: String) {
 
 
 
@@ -95,9 +95,9 @@ class GUIMercury(name: String) {
     index = 0
     for (chr: Char in thirdRow) {
       if (charDefinations.contains(chr)) {
-        inv.setItem(index + 19, charDefinations[chr])
+        inv.setItem(index + 18, charDefinations[chr])
       } else {
-        inv.setItem(index + 19, charDefinations[' '])
+        inv.setItem(index + 18, charDefinations[' '])
       }
       index++
     }

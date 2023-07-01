@@ -4,6 +4,7 @@ import com.autumnstudios.plugins.mercury.Mercury
 import com.autumnstudios.plugins.mercury.api.sound.QuickSound
 import me.flaming.utils.Button
 import me.flaming.utils.MenuUtils
+import org.bukkit.Bukkit
 import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.Material
@@ -97,6 +98,14 @@ class CustomMenu(p: Player, buttons: List<Button>) : Listener {
             tr.scale.set(0.75)
             cursor.transformation = tr
         }
+
+      for (p: Player in Bukkit.getOnlinePlayers()) {
+        if (p != player) {
+          p.hideEntity(Mercury.getMercury(), (cursor as Entity))
+        }
+      }
+
+
     }
 
     @EventHandler
@@ -115,6 +124,7 @@ class CustomMenu(p: Player, buttons: List<Button>) : Listener {
     for (entity: Entity in screen?.components!!) {
       e.player.hideEntity(Mercury.getMercury(), entity)
     }
+    e.player.hideEntity(Mercury.getMercury(), (cursor as Entity))
   }
 
   @EventHandler

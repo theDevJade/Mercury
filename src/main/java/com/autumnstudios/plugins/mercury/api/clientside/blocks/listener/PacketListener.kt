@@ -19,7 +19,7 @@ class PacketListener : PacketListenerAbstract(PacketListenerPriority.HIGHEST) {
         if (event.packetType == PacketType.Play.Client.PLAYER_DIGGING) {
             val wrappedPacket = WrapperPlayClientPlayerDigging(event)
 
-            Bukkit.broadcastMessage("Received a packet digging.")
+
 
             // TODO: we may need to send a block Ack packet (Agnowledge)
             if (BlockTracker.isPacketBlock((event.player as Player).uniqueId, wrappedPacket.blockPosition, (event.player as Player).world.name)) {
@@ -29,7 +29,7 @@ class PacketListener : PacketListenerAbstract(PacketListenerPriority.HIGHEST) {
         } else if (event.packetType == PacketType.Play.Client.PLAYER_BLOCK_PLACEMENT) {
             val wrappedPacket = WrapperPlayClientPlayerBlockPlacement(event)
 
-            Bukkit.broadcastMessage("Receievde block placement")
+
 
             if (BlockTracker.isPacketBlock((event.player as Player).uniqueId, wrappedPacket.blockPosition, (event.player as Player).world.name)) {
                 event.isCancelled = true

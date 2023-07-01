@@ -172,6 +172,7 @@ class NPC(n: String, originalWorld: World, global: Boolean, extenser: NPCExtensi
     connection.send(ClientboundRemoveEntitiesPacket(getEntityID()))
 
 
+
   }
 
   fun respawn() {

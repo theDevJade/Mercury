@@ -26,4 +26,10 @@ class ParticleCore {
         packet.float.write(0, x).write(1, y).write(2, z)
         manager.sendServerPacket(player, packet)
     }
+
+  fun spawnFromList(eff: EnumWrappers.Particle, locs: List<Location>, p: Player) {
+    for (loc: Location in locs) {
+      spawn(eff, loc.x.toFloat(), loc.y.toFloat(), loc.z.toFloat(), p)
+    }
+  }
 }
