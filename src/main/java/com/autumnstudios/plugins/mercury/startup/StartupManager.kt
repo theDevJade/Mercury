@@ -1,15 +1,12 @@
 package com.autumnstudios.plugins.mercury.startup
 
 import com.autumnstudios.plugins.mercury.Mercury
-import com.autumnstudios.plugins.mercury.api.commands.TestCommands
 import com.autumnstudios.plugins.mercury.api.effects.PermPotionManager
 import com.autumnstudios.plugins.mercury.api.npc.NPCDataStorage
 import com.autumnstudios.plugins.mercury.api.schedulers.GlobalSchedulersData
-import com.autumnstudios.plugins.mercury.modules.murky.MurkyCommand
 import org.bukkit.Bukkit
 import org.bukkit.Server
 import org.bukkit.plugin.PluginManager
-import revxrsal.commands.bukkit.BukkitCommandHandler
 
 class StartupManager {
 
@@ -37,10 +34,7 @@ class StartupManager {
   }
 
   private fun registerCommands() {
-    val cmHandler: BukkitCommandHandler = BukkitCommandHandler.create(instance)
 
-    cmHandler.register(TestCommands())
-    cmHandler.register(MurkyCommand())
   }
 
   private fun registerVariables() {
@@ -52,7 +46,6 @@ class StartupManager {
   private fun dependencyCheck() : Boolean {
     var missingProtocolLib: Boolean = false
     var missingPacketEvents: Boolean = false
-    var missingFAWE: Boolean = false
 
     var missingDepend: Boolean = false
 

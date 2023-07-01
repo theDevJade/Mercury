@@ -1,6 +1,6 @@
 package com.ascorapvp.refine.tracker
 
-import com.ascorapvp.refine.utils.WrappedPacketBlock
+import com.autumnstudios.plugins.mercury.api.quickaccess.WrappedPacketBlock
 import com.github.retrooper.packetevents.util.Vector3i
 import java.util.UUID
 

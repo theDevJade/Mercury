@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
   `java-library`
+  `maven-publish`
   id("io.papermc.paperweight.userdev") version "1.5.5"
   id("xyz.jpenilla.run-paper") version "2.1.0" // Adds runServer and runMojangMappedServer tasks for testing
 
@@ -11,13 +12,15 @@ plugins {
 }
 
 group = "com.autumnstudios.plugins.mercury"
-version = "1.0.0-SNAPSHOT"
+version = "2.0"
 description = "Test plugin for paperweight-userdev"
 
 java {
   // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
   toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
+
+
 
 dependencies {
 
@@ -31,19 +34,66 @@ dependencies {
   implementation("cloud.commandframework", "cloud-paper", "1.8.3")
   implementation(kotlin("stdlib-jdk8"))
   compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0")
-  implementation("com.github.Revxrsal.Lamp:common:3.1.5")
-  implementation("com.github.Revxrsal.Lamp:bukkit:3.1.5")
-  implementation("dev.simplix.cirrus:cirrus-spigot:2.0.0")
   compileOnly("dev.simplix:protocolize-api:2.1.0")
   compileOnly("com.github.retrooper.packetevents:spigot:2.0.0-SNAPSHOT")
   compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.2.9")
   compileOnly("com.sk89q.worldedit:worldedit-core:7.2.0-SNAPSHOT")
 }
 
+publishing {
+  publications {
+    create<MavenPublication>("mavenJava") {
+      groupId = "com.autumnstudios.plugins.mercury"
+      artifactId = "mercury"
+      from(components["java"])
+      versionMapping {
+        usage("java-api") {
+          fromResolutionOf("runtimeClasspath")
+        }
+        usage("java-runtime") {
+          fromResolutionResult()
+        }
+      }
+      pom {
+        name.set("Mercury")
+        description.set("A concise description of my library")
+        url.set("http://www.example.com/library")
+
+        developers {
+          developer {
+            id.set("jade")
+            name.set("Jade")
+            email.set("john.doe@example.com")
+          }
+        }
+
+      }
+    }
+  }
+
+
+}
+
+
+
+
+task("buildLibrary") {
+  dependsOn("assemble", "publish")
+  doLast {
+    println("Built and published to local maven library")
+  }
+}
+
 tasks {
   // Configure reobfJar to run when invoking the build task
   assemble {
     dependsOn(reobfJar)
+  }
+
+
+
+  publish {
+    publishToMavenLocal
   }
 
   compileKotlin {

@@ -1,6 +1,7 @@
 package com.autumnstudios.plugins.mercury.api.utils
 
 
+import com.autumnstudios.plugins.mercury.api.quickaccess.Skin
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser

@@ -4,7 +4,7 @@ import com.autumnstudios.plugins.mercury.api.utils.ReflectionUtils
 import com.autumnstudios.plugins.mercury.Mercury
 import com.autumnstudios.plugins.mercury.api.npc.NPCExtensive
 import com.autumnstudios.plugins.mercury.api.utils.ColorUtil
-import com.autumnstudios.plugins.mercury.api.utils.Skin
+import com.autumnstudios.plugins.mercury.api.quickaccess.Skin
 import com.autumnstudios.plugins.mercury.api.utils.SkinFetcher
 import com.comphenix.protocol.ProtocolLibrary
 import com.comphenix.protocol.ProtocolManager
