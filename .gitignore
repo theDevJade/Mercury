@@ -8,6 +8,11 @@
 # IntelliJ
 out/
 
+gradle
+lib
+.idea
+.github
+
 # Eclipse
 .classpath
 .project
