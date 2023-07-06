@@ -14,6 +14,9 @@ plugins {
 group = "com.autumnstudios.plugins.mercury"
 version = "2.0"
 description = "Test plugin for paperweight-userdev"
+// Latest is 1.20.1-R0.1-SNAPSHOT
+// https://www.spigotmc.org/wiki/spigot-nms-and-minecraft-versions-1-16/
+var minecraftVersion = "1.20.1-R0.1-SNAPSHOT"
 
 java {
   // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
@@ -24,7 +27,7 @@ java {
 
 dependencies {
 
-  paperweight.paperDevBundle("1.20-R0.1-SNAPSHOT")
+  paperweight.paperDevBundle(minecraftVersion)
   // paperweight.foliaDevBundle("1.20-R0.1-SNAPSHOT")
   // paperweight.devBundle("com.example.paperfork", "1.20-R0.1-SNAPSHOT")
 
@@ -126,7 +129,7 @@ tasks {
   }
 
   reobfJar {
-    outputJar.set(layout.buildDirectory.file("libs/Mercury-Remapped-1.0.jar"))
+    outputJar.set(layout.buildDirectory.file("Mercury-mc-${minecraftVersion}-version-${version}.jar"))
   }
 
   shadowJar {
