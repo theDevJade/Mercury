@@ -17,6 +17,7 @@ description = "Test plugin for paperweight-userdev"
 // Latest is 1.20.1-R0.1-SNAPSHOT
 // https://www.spigotmc.org/wiki/spigot-nms-and-minecraft-versions-1-16/
 var minecraftVersion = "1.20.1-R0.1-SNAPSHOT"
+var readableName = "1.20.1"
 
 java {
   // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
@@ -129,7 +130,7 @@ tasks {
   }
 
   reobfJar {
-    outputJar.set(layout.buildDirectory.file("Mercury-mc-${minecraftVersion}-version-${version}.jar"))
+    outputJar.set(layout.buildDirectory.file("Mercury-mc-${readableName}-version-${version}.jar"))
   }
 
   shadowJar {

@@ -29,22 +29,17 @@ class DependencyDownloader {
 
 
     logger.severe("#######################")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
-    logger.severe("RELOADING SERVER!")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
+    logger.severe("SHUTTING DOWN SERVER | INSTALLED DEPENDS")
     logger.severe("#######################")
-    Bukkit.getServer().reload()
+    Bukkit.getServer().shutdown()
   }
 
   private fun download(depend: MercuryDepend) {
